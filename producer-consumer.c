@@ -12,8 +12,8 @@
  *  a buffer. Consumers will attempt to remove ints from the
  *  buffer. 
  *
- *  To compile: gcc lab3.c -o lab3 -lpthread -lrt
- *  To run: ./lab3 # # # where # is some integer specifying the
+ *  To compile: gcc producer-consumer.c -o pc.out -lpthread -lrt
+ *  To run: ./pc.out x y z where x, y, z is some integer specifying the
  *  sleep time, number of producers, number of consumers.
  **/
 

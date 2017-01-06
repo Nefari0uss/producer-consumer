@@ -9,5 +9,7 @@ This simulation was to help learn about threading in C using producers and consu
 
 ## Compilation Instructions
 * Compile: gcc producer-consumer.c -o pc.out -lpthread -lrt
-* Run: ./lab3 x y z where x,y, and z is some integer specifying the sleep time, number of producers, number of consumers.
+* Run: ./pc.out x y z where x,y, and z is some integer specifying the sleep time, number of producers, number of consumers.
 
+## Asciicast
+[![asciicast](https://asciinema.org/a/98427.png)](https://asciinema.org/a/98427)
