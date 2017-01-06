@@ -2,7 +2,6 @@
 
 ## Author: [nefari0uss](https://www.github.com/nefari0uss)
 
-## License
 [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
  
 ## Summary
