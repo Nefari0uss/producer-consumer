@@ -3,6 +3,7 @@
 #include <time.h> // time for seeding
 #include <pthread.h> // include pthread functions and structures
 #include <semaphore.h> // include semaphores
+#include <unistd.h> // include sleep
 
 /** Producer - Consumer Simulation
  *  @author Nefari0uss
@@ -12,7 +13,6 @@
  *  a buffer. Consumers will attempt to remove ints from the
  *  buffer. 
  *
- *  To compile: gcc producer-consumer.c -o pc.out -lpthread -lrt
  *  To run: ./pc.out x y z where x, y, z is some integer specifying the
  *  sleep time, number of producers, number of consumers.
  **/
@@ -43,7 +43,6 @@ void printBuffer() {
     for(i = 0; i < BUFFER_SIZE; i++)
     {
         printf("%d ", buffer[i]); 
-
     }
     printf("]\n");
 
@@ -61,7 +60,8 @@ int insert_item(buffer_item item) {
         buffer[insertIndex] = item;
 
         /* Adjust insertIndex position. Increment and modulo for circular buffer. */
-        insertIndex = ++insertIndex % BUFFER_SIZE;
+        insertIndex++;
+        insertIndex = insertIndex % BUFFER_SIZE;
 
         printf("---> Produced: %d\n", item);
         printBuffer();
@@ -83,7 +83,8 @@ int remove_item(buffer_item item) {
         buffer[removeIndex] = '\0';
 
         /* Adjust removeIndex position. Increment and modulo for circular buffer. */
-        removeIndex = ++removeIndex % BUFFER_SIZE;
+        removeIndex++;
+        removeIndex = removeIndex % BUFFER_SIZE;
 
         printf("<--- Consumed: %d\n", removedItem);
         printBuffer();
@@ -135,7 +136,7 @@ void *producer(void *param) {
 
 /** Consumer Entry **/
 void *consumer(void *param) {
-    buffer_item item;
+    buffer_item *item = (int *)malloc(sizeof(int));
     while (1) {
         printf("in consumer.\n");
         /* Sleep for a random period of time between 1 and SLEEP_TIME */
@@ -154,9 +155,8 @@ void *consumer(void *param) {
         //item = rand_r(&seed);
 
         // insert item into buffer and report on error condition if any
-        if (remove_item(item) < 0) {
+        if (remove_item(*item) < 0) {
             printf("Could not remove from buffer. The item does not exist!\n");
-
         }
 
         /* end critical section */
@@ -168,7 +168,7 @@ void *consumer(void *param) {
         sem_post(&empty);
 
     }
-
+    free(item);
 }
 
 
