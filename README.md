@@ -1,4 +1,4 @@
-#  Producer - Consumer Simulation
+# Producer - Consumer Simulation
 
 ## Author: [nefari0uss](https://www.github.com/nefari0uss)
 
@@ -14,4 +14,4 @@ This simulation was to help learn about threading in C using producers and consu
 * Run `$ ./pc x y x` where x,y, and z is some integer specifying the sleep time, number of producers, number of consumers.
 
 ## Asciicast
-[![asciicast](https://asciinema.org/a/98427.png)](https://asciinema.org/a/98427)
+![asciicast](https://asciinema.org/a/98549.png)](https://asciinema.org/a/98549)
